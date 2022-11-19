@@ -26,6 +26,7 @@ public class SnakeAndLadder {
                         positionOfPlayer = START_POSITION;
                     }
                 }
+                default -> positionOfPlayer = positionOfPlayer;
             }
         }
         System.out.println("Position of Player is : " + positionOfPlayer);
