@@ -9,16 +9,19 @@ public class SnakeAndLadder {
         System.out.println("Welcome to Snake And Ladder Problem");
         int positionOfPlayer = START_POSITION ;
 
-        while (positionOfPlayer <= FINAL_POSITION) {
+        while (positionOfPlayer < FINAL_POSITION) {
             double dieRoll = Math.floor(Math.random() * 10) % 6 + 1;
             double optionRoll = Math.floor(Math.random() * 10) % 3;
-            System.out.println("Die roll : " + dieRoll);
-            System.out.println("Option roll: " + optionRoll);
+
             switch ((int) optionRoll) {
-                case LADDER ->
+                case LADDER -> {
                     positionOfPlayer = positionOfPlayer + ((int) dieRoll);
+                    if (positionOfPlayer > FINAL_POSITION) {
+                        positionOfPlayer = positionOfPlayer - ((int) dieRoll);
+                    }
+                }
                 case SNAKE -> {
-                    if (positionOfPlayer - ((int) dieRoll) < 0) {
+                    if (positionOfPlayer - ((int) dieRoll) < START_POSITION) {
                         positionOfPlayer = START_POSITION;
                     } else {
                         positionOfPlayer = positionOfPlayer - ((int) dieRoll);
