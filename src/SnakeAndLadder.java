@@ -10,8 +10,8 @@ public class SnakeAndLadder {
         int positionOfPlayer = START_POSITION ;
 
         while (positionOfPlayer < FINAL_POSITION) {
-            double dieRoll = Math.floor(Math.random() * 10) % 6 + 1;
-            double optionRoll = Math.floor(Math.random() * 10) % 3;
+            int dieRoll = generateRandomDie(6,1);
+            int optionRoll = generateRandomDie(3,1);
 
             switch ((int) optionRoll) {
                 case LADDER -> {
@@ -30,5 +30,10 @@ public class SnakeAndLadder {
             }
         }
         System.out.println("Position of Player is : " + positionOfPlayer);
+    }
+
+    public static int generateRandomDie (int max, int min) {
+        int dieRoll = (int)Math.floor(Math.random() * 10) % max + min;
+        return dieRoll;
     }
 }
