@@ -10,25 +10,28 @@ public class SnakeAndLadder {
         int positionOfPlayer = START_POSITION ;
 
         while (positionOfPlayer < FINAL_POSITION) {
-            double dieRoll = Math.floor(Math.random() * 10) % 6 + 1;
-            double optionRoll = Math.floor(Math.random() * 10) % 3;
+            int dieRoll = generateRandomNumber(6, 1);
+            int optionRoll = generateRandomNumber(3, 1);
 
-            switch ((int) optionRoll) {
+            switch (optionRoll) {
                 case LADDER -> {
-                    positionOfPlayer = positionOfPlayer + ((int) dieRoll);
+                    positionOfPlayer = positionOfPlayer + dieRoll;
                     if (positionOfPlayer > FINAL_POSITION) {
-                        positionOfPlayer = positionOfPlayer - ((int) dieRoll);
+                        positionOfPlayer = positionOfPlayer - dieRoll;
                     }
                 }
                 case SNAKE -> {
-                    if (positionOfPlayer - ((int) dieRoll) < START_POSITION) {
+                    positionOfPlayer = positionOfPlayer - dieRoll;
+                    if (positionOfPlayer - dieRoll < START_POSITION) {
                         positionOfPlayer = START_POSITION;
-                    } else {
-                        positionOfPlayer = positionOfPlayer - ((int) dieRoll);
                     }
                 }
             }
         }
         System.out.println("Position of Player is : " + positionOfPlayer);
+    }
+
+    public static int generateRandomNumber(int maxRange, int minRange) {
+        return (int) Math.floor(Math.random() * 10) % maxRange + minRange;
     }
 }
