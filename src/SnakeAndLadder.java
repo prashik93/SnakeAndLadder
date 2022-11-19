@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class SnakeAndLadder {
 
     static final int START_POSITION = 0;
@@ -8,6 +10,7 @@ public class SnakeAndLadder {
     public static void main(String[] args) {
         System.out.println("Welcome to Snake And Ladder Problem");
         int positionOfPlayer = START_POSITION ;
+        ArrayList<Integer> rollCountArray = new ArrayList<> ();
 
         while (positionOfPlayer < FINAL_POSITION) {
             int dieRoll = generateRandomNumber(6, 1);
@@ -28,8 +31,11 @@ public class SnakeAndLadder {
                 }
                 default -> positionOfPlayer = positionOfPlayer;
             }
+            rollCountArray.add(positionOfPlayer);
         }
-        System.out.println("Position of Player is : " + positionOfPlayer);
+        System.out.println("Final position of Player is : " + positionOfPlayer);
+        System.out.println("Position after every die roll is : " + rollCountArray);
+        System.out.println("Number of times the die was played to win the game is : " + rollCountArray.size());
     }
 
     public static int generateRandomNumber(int maxRange, int minRange) {
